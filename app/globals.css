@@ -138,6 +138,29 @@
     grid-column: 2;
   }
 
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .marquee-track {
+    animation: marquee 55s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-track.paused {
+    animation-play-state: paused;
+  }
+
   .nav-link-active {
     position: relative;
   }

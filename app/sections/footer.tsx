@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="flex justify-between mt-12 pt-6 border-t border-border">
+    <footer className="flex sm:flex-row flex-col sm:justify-between gap-2 mt-12 pt-6 border-t border-border">
       <p className="text-xs text-fg-tertiary">© 2026 Amaan Javed</p>
       <p className="text-xs text-fg-tertiary">
         Inspired by{" "}

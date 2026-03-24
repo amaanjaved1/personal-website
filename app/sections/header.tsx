@@ -51,10 +51,10 @@ export function Header() {
           </svg>
         </a>
       </div>
-      <div className="lg:hidden flex text-xs gap-1">
+      <div className="lg:hidden flex flex-wrap justify-center text-xs gap-1">
         <p>Software Engineering,</p>
         <div className="inline-flex gap-2 align-middle">
-          <p>Queen's Computer Science (GPA: 3.95/4.00)</p>
+          <p>Queen&apos;s CS (GPA: 3.95/4.00)</p>
           <Image
             width={18}
             height={18}

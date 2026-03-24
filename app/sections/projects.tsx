@@ -16,7 +16,7 @@ const PROJECTS = [
 
 export function Projects() {
   return (
-    <section className="flex flex-col gap-3 lg:w-1/3">
+    <section className="flex flex-col gap-3 lg:w-1/3 w-full min-w-0">
       <h2 className="text-xs text-fg-tertiary lg:mt-6">NOTABLE PROJECTS</h2>
       <div className="grid grid-cols-1 gap-3">
         {PROJECTS.map(
@@ -51,7 +51,7 @@ export function Projects() {
             A typed, retrying, rate-limited unofficial client for RateMyProfessors — available in Python and TypeScript.
           </p>
 
-          <div className="flex gap-2">
+          <div className="flex sm:flex-row flex-col gap-2">
             <a
               href="https://github.com/amaanjaved1/Rate-My-Professors-API-Client-Python"
               target="_blank"

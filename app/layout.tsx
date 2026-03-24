@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
@@ -8,6 +8,11 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Amaan Javed",
@@ -23,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`bg-grid ${geistMono.variable} antialiased min-h-screen flex flex-col relative`}
+        className={`bg-grid ${geistMono.variable} antialiased min-h-screen flex flex-col relative overflow-x-hidden`}
       >
         {children}
         <Navbar />

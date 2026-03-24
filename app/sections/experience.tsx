@@ -135,7 +135,7 @@ function ExperienceGroup({
 
 export function Experience() {
   return (
-    <section className="flex lg:w-2/3 w-full flex-col gap-3">
+    <section className="flex lg:w-2/3 w-full min-w-0 flex-col gap-3">
       <ExperienceGroup heading="WORK EXPERIENCE" items={WORK_EXPERIENCES} />
       <ExperienceGroup heading="RESEARCH EXPERIENCE" items={RESEARCH_EXPERIENCES} />
       <ExperienceGroup heading="DESIGN TEAMS" items={DESIGN_TEAMS} />

@@ -8,6 +8,7 @@ const HOBBIES = [
   { emoji: "🏃", label: "Running",               detail: null                 },
   { emoji: "🍦", label: "Ice Cream Connoisseur", detail: null                 },
   { emoji: "📷", label: "Photography",           detail: null                 },
+  { emoji: "🧱", label: "Lego",                  detail: null                 },
 ];
 
 export function Hobbies() {

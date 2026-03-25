@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Experience as ExperienceComponent } from "@/components/experience";
+import { AwardsCarousel } from "@/components/awards-carousel";
 
 const WORK_EXPERIENCES = [
   {
@@ -14,7 +15,7 @@ const WORK_EXPERIENCES = [
         alt="Mission Control Logo"
       />
     ),
-    date: "Sep 2025 - Present",
+    date: "Sep 2025 - Sep 2026",
     location: "Ottawa, Canada",
   },
   {
@@ -82,32 +83,6 @@ const RESEARCH_EXPERIENCES = [
   },
 ];
 
-const DESIGN_TEAMS = [
-  {
-    title: "Design Team Member",
-    companyName: "QMIND - Queen's University AI Club",
-    extra: "🤖 Knee Replacement Surgery Outcome Prediction",
-    image: <Image width={40} height={40} src="/qmind.jpg" alt="QMIND Logo" />,
-    date: "Sep 2023 - Mar 2024",
-    location: "Kingston, Canada",
-  },
-  {
-    title: "Junior Frontend Developer",
-    companyName: "COMPSA - Computing Student's Association",
-    extra: "💻 Computing Students' Association",
-    image: (
-      <Image
-        width={40}
-        height={40}
-        src="/compsa.jpeg"
-        alt="COMPSA Logo"
-      />
-    ),
-    date: "Sep 2022 - May 2023",
-    location: "Kingston, Canada",
-  },
-];
-
 function ExperienceGroup({
   heading,
   items,
@@ -118,17 +93,19 @@ function ExperienceGroup({
   return (
     <>
       <h2 className="text-xs text-fg-tertiary mt-3">{heading}</h2>
-      {items.map(({ title, companyName, extra, image, date, location }, index) => (
-        <ExperienceComponent
-          key={index}
-          title={title}
-          description={companyName}
-          extra={extra}
-          image={image}
-          date={date}
-          location={location}
-        />
-      ))}
+      {items.map(
+        ({ title, companyName, extra, image, date, location }, index) => (
+          <ExperienceComponent
+            key={index}
+            title={title}
+            description={companyName}
+            extra={extra}
+            image={image}
+            date={date}
+            location={location}
+          />
+        ),
+      )}
     </>
   );
 }
@@ -136,9 +113,16 @@ function ExperienceGroup({
 export function Experience() {
   return (
     <section className="flex lg:w-2/3 w-full min-w-0 flex-col gap-3">
-      <ExperienceGroup heading="WORK EXPERIENCE" items={WORK_EXPERIENCES} />
-      <ExperienceGroup heading="RESEARCH EXPERIENCE" items={RESEARCH_EXPERIENCES} />
-      <ExperienceGroup heading="DESIGN TEAMS" items={DESIGN_TEAMS} />
+      <ExperienceGroup heading="💼 WORK EXPERIENCE" items={WORK_EXPERIENCES} />
+      <ExperienceGroup
+        heading="🔬 RESEARCH EXPERIENCE"
+        items={RESEARCH_EXPERIENCES}
+      />
+
+      <h2 className="text-xs text-fg-tertiary mt-2">
+        🏅 AWARDS & ACCOMPLISHMENTS
+      </h2>
+      <AwardsCarousel />
     </section>
   );
 }

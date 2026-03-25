@@ -13,8 +13,8 @@ const HOBBIES = [
 
 export function Hobbies() {
   return (
-    <section className="flex flex-col gap-4 w-full mt-8 overflow-hidden">
-      <h2 className="text-xs text-fg-tertiary">HOBBIES &amp; INTERESTS</h2>
+    <section className="flex flex-col gap-4 w-full mt-6 lg:mt-8 overflow-hidden">
+      <h2 className="text-xs text-fg-tertiary">🎨 HOBBIES &amp; INTERESTS</h2>
 
       <TravelCarousel />
 

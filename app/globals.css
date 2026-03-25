@@ -161,6 +161,51 @@
     animation-play-state: paused;
   }
 
+  /* Duplicated track: opposite direction from `.marquee-track` (travel) */
+  @keyframes marquee-reverse {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .marquee-track-reverse {
+    animation: marquee-reverse 75s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-track-reverse.paused {
+    animation-play-state: paused;
+  }
+
+  /* Subtle light sweep on Mitacs award card (no spinning border) */
+  @keyframes mitacs-sheen {
+    0%,
+    100% {
+      background-position: 120% 0;
+    }
+    50% {
+      background-position: -20% 0;
+    }
+  }
+
+  .mitacs-sheen {
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      transparent 38%,
+      rgba(255, 255, 255, 0.12) 49%,
+      rgba(254, 249, 195, 0.2) 50%,
+      rgba(255, 255, 255, 0.12) 51%,
+      transparent 62%,
+      transparent 100%
+    );
+    background-size: 240% 100%;
+    animation: mitacs-sheen 6.5s ease-in-out infinite;
+  }
+
   .nav-link-active {
     position: relative;
   }

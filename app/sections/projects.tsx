@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { Project } from "@/components/project";
 import { Badge } from "@/components/badge";
 import { TechBadge } from "@/components/tech-badge";
-
 const PROJECTS = [
   {
     name: "CoursifyQU",
@@ -17,7 +17,7 @@ const PROJECTS = [
 export function Projects() {
   return (
     <section className="flex flex-col gap-3 lg:w-1/3 w-full min-w-0">
-      <h2 className="text-xs text-fg-tertiary lg:mt-6">NOTABLE PROJECTS</h2>
+      <h2 className="text-xs text-fg-tertiary lg:mt-6">🚀 NOTABLE PROJECTS</h2>
       <div className="grid grid-cols-1 gap-3">
         {PROJECTS.map(
           ({ name, description, badges, github, scrapers }, index) => (
@@ -36,7 +36,7 @@ export function Projects() {
         <div className="bento-card flex flex-col gap-3">
           <div className="flex items-start justify-between gap-2">
             <div className="flex flex-col gap-1.5">
-              <p className="text-xs">RateMyProfessors API Client</p>
+              <p className="text-xs">📦 RateMyProfessors API Client</p>
               <div className="flex gap-1.5">
                 <Badge color="orange">OPEN SOURCE</Badge>
                 <Badge color="orange">API CLIENT</Badge>
@@ -88,6 +88,35 @@ export function Projects() {
               </div>
             </a>
           </div>
+        </div>
+
+        {/* QMIND design team (from former Design Teams section) */}
+        <div className="bento-card flex flex-col gap-3">
+          <div className="flex items-start justify-between gap-2">
+            <div className="flex items-start gap-2.5 min-w-0">
+              <Image
+                width={40}
+                height={40}
+                src="/qmind.jpg"
+                alt="QMIND logo"
+                className="rounded-lg object-cover shrink-0"
+              />
+              <div className="flex flex-col gap-1.5 min-w-0">
+                <p className="text-xs leading-snug">🤖 QMIND — knee surgery outcome prediction</p>
+                <div className="flex flex-wrap gap-1.5">
+                  <Badge color="orange">DESIGN TEAM</Badge>
+                  <Badge color="orange">ML</Badge>
+                </div>
+              </div>
+            </div>
+            <p className="text-fg-tertiary text-[9px] uppercase tracking-wider whitespace-nowrap shrink-0">
+              Sep 2023 – Mar 2024
+            </p>
+          </div>
+          <p className="text-fg-tertiary lg:text-xs text-[10px]">
+            Design team member at Queen&apos;s AI Club — project on predicting knee replacement surgery outcomes.
+            Kingston, Canada.
+          </p>
         </div>
       </div>
     </section>

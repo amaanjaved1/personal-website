@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { type ReactNode, useState } from "react";
 import type { AwardEntry, AwardHighlight } from "@/lib/awards-data";
 import { AWARDS } from "@/lib/awards-data";
 
@@ -91,7 +91,7 @@ function AwardMarqueeCard(entry: AwardEntry) {
   );
 }
 
-export function AwardsCarousel() {
+export function AwardsCarousel({ children }: { children?: ReactNode }) {
   const [paused, setPaused] = useState(false);
   const track = [...AWARDS, ...AWARDS];
 
@@ -118,6 +118,8 @@ export function AwardsCarousel() {
           ))}
         </div>
       </div>
+
+      {children}
     </div>
   );
 }

@@ -2,13 +2,27 @@ import Image from "next/image";
 import { Project } from "@/components/project";
 import { Badge } from "@/components/badge";
 import { TechBadge } from "@/components/tech-badge";
-const PROJECTS = [
+
+type ProjectEntry = {
+  name: string;
+  description: string;
+  technologies: string[];
+  badges: string[];
+  github?: string;
+  webApp?: string;
+  rag?: string;
+  scrapers?: string;
+};
+
+const PROJECTS: ProjectEntry[] = [
   {
     name: "CoursifyQU",
     description:
       "A course insights platform for Queen's University with data scraped from Reddit & RateMyProfessors, and a RAG-powered AI assistant.",
     technologies: [],
-    github: "https://coursify-qu.vercel.app/",
+    github: "https://www.coursify.ca/",
+    webApp: "https://github.com/amaanjaved1/Coursify-WebApp",
+    rag: "https://github.com/amaanjaved1/Coursify-RAG",
     scrapers: "https://github.com/CoursifyQU/Coursify-Scrapers",
     badges: ["FULL-STACK", "RAG", "DATA SCRAPING"],
   },
@@ -20,13 +34,15 @@ export function Projects() {
       <h2 className="text-xs text-fg-tertiary lg:mt-6">🚀 NOTABLE PROJECTS</h2>
       <div className="grid grid-cols-1 gap-3">
         {PROJECTS.map(
-          ({ name, description, badges, github, scrapers }, index) => (
+          ({ name, description, badges, github, webApp, rag, scrapers }, index) => (
             <Project
               key={index}
               name={name}
               description={description}
               badges={badges}
               github={github}
+              webApp={webApp}
+              rag={rag}
               scrapers={scrapers}
             />
           )

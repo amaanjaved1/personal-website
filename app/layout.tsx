@@ -20,13 +20,30 @@ export const metadata: Metadata = {
     "Computer science student passionate about pursuing a career in tech!",
 };
 
+const themeInitScript = `
+(function(){
+  try {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  } catch (_) {}
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
+      </head>
       <body
         className={`bg-grid ${geistMono.variable} antialiased min-h-screen flex flex-col relative overflow-x-hidden`}
       >

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -27,6 +28,7 @@ export function Navbar() {
       >
         RESUME
       </a>
+      <ThemeToggle />
     </div>
   );
 }

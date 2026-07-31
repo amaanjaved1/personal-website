@@ -1,4 +1,12 @@
+import Image from "next/image";
 import { Badge } from "@/components/badge";
+
+export type Highlight = {
+  image: string;
+  alt: string;
+  caption: string;
+  href?: string;
+};
 
 const githubIcon = (
   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden>
@@ -19,6 +27,7 @@ export function Project({
   webApp,
   rag,
   scrapers,
+  highlights = [],
 }: {
   badges: string[];
   name: string;
@@ -28,6 +37,7 @@ export function Project({
   webApp?: string;
   rag?: string;
   scrapers?: string;
+  highlights?: Highlight[];
 }) {
   const sourceItems: { label: string; href: string }[] = [];
   if (webApp) sourceItems.push({ label: "Web App", href: webApp });
@@ -38,7 +48,7 @@ export function Project({
   const hasLinks = github || hasSourceMenu;
 
   const buttons = hasLinks && (
-    <div className="relative z-10 flex flex-wrap items-center gap-1.5 mt-1">
+    <div className="relative z-10 flex flex-wrap items-center gap-1.5 mt-auto pt-1">
       {github && (
         <a
           href={github}
@@ -99,31 +109,71 @@ export function Project({
   );
 
   const cardContent = (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 flex-1 min-h-0">
       <p className="text-xs lg:min-w-64">{name}</p>
       {link && (
         <p className="text-xs text-fg-tertiary absolute right-[16px] top-[16px] group-hover:text-accent duration-300 transition-all ease-in-out">
           →
         </p>
       )}
-      <div className="flex gap-2">
-        {badges.map((badge) => (
-          <Badge key={badge} color="orange" className="uppercase">
-            {badge}
-          </Badge>
-        ))}
-      </div>
+      {badges.length > 0 && (
+        <div className="flex gap-2">
+          {badges.map((badge) => (
+            <Badge key={badge} color="orange" className="uppercase">
+              {badge}
+            </Badge>
+          ))}
+        </div>
+      )}
       <p className="text-fg-tertiary lg:text-xs text-[10px]">
         {description}
       </p>
+      {highlights.length > 0 && (
+        <div className="relative z-10 grid grid-cols-2 gap-2 mt-1">
+          {highlights.map(({ image, alt, caption, href }) => {
+            const thumbnail = (
+              <>
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg border border-border">
+                  <Image
+                    src={image}
+                    alt={alt}
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 20vw"
+                    className="object-cover"
+                  />
+                </div>
+                <p className="text-fg-tertiary text-[9px] leading-snug">
+                  {caption}
+                </p>
+              </>
+            );
+
+            return href ? (
+              <a
+                key={caption}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col gap-1 hover:opacity-80 transition-opacity"
+              >
+                {thumbnail}
+              </a>
+            ) : (
+              <div key={caption} className="flex flex-col gap-1">
+                {thumbnail}
+              </div>
+            );
+          })}
+        </div>
+      )}
       {buttons}
     </div>
   );
 
   return (
-    <div className="bento-card relative group h-auto">
+    <div className="bento-card relative group h-full flex flex-col">
       {link ? (
-        <a href={link} className="block">
+        <a href={link} className="flex flex-1 flex-col">
           {cardContent}
         </a>
       ) : (

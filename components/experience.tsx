@@ -16,7 +16,7 @@ export function Experience({
   extra?: string;
 }) {
   return (
-    <div className="flex bento-card gap-4 lg:h-19 h-auto items-center lg:items-stretch">
+    <div className="flex bento-card gap-4 lg:min-h-19 h-full items-center lg:items-stretch">
       <div className="shrink-0">{image}</div>
       <div className="flex flex-col justify-center gap-1 w-full min-w-0">
         <div className="flex lg:flex-row flex-col lg:items-center lg:justify-between gap-0.5">

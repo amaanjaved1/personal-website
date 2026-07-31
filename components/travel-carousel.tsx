@@ -103,12 +103,7 @@ export function TravelCarousel() {
   return (
     <div className="bento-card flex flex-col gap-3">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <p className="text-xs">✈️ Travel</p>
-          <span className="text-fg-tertiary text-[9px] uppercase tracking-wider">
-            {DESTINATIONS.length} destinations
-          </span>
-        </div>
+        <p className="text-xs">✈️ Travel</p>
         <span className="text-fg-tertiary text-[9px]">Hover to pause</span>
       </div>
 

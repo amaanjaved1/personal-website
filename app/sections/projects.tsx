@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Project } from "@/components/project";
+import { Project, type Highlight } from "@/components/project";
 import { Badge } from "@/components/badge";
 
 type ProjectEntry = {
@@ -11,30 +11,50 @@ type ProjectEntry = {
   webApp?: string;
   rag?: string;
   scrapers?: string;
+  highlights?: Highlight[];
 };
 
 const PROJECTS: ProjectEntry[] = [
   {
     name: "📚 Coursify",
     description:
-      "A course insights platform for Queen's University with data scraped from Reddit & RateMyProfessors, and a RAG-powered AI assistant.",
+      "A course insights platform for Queen's University students, powered by an AI assistant.",
     technologies: [],
     github: "https://www.coursify.ca/",
-    webApp: "https://github.com/amaanjaved1/Coursify-WebApp",
-    rag: "https://github.com/amaanjaved1/Coursify-RAG",
-    scrapers: "https://github.com/CoursifyQU/Coursify-Scrapers",
-    badges: ["FULL-STACK", "RAG", "DATA SCRAPING"],
+    badges: [],
+    highlights: [
+      {
+        image: "/shopify-builder-sundays.jpg",
+        alt: "Amaan presenting Coursify at Shopify Builder Sundays",
+        caption: "Presented Coursify at Shopify Builder Sundays",
+      },
+      {
+        image: "/qjournal.jpg",
+        alt: "Coursify featured in the Queen's Journal",
+        caption: "Featured in the Queen's Journal",
+        href: "https://www.queensjournal.ca/student-built-platform-aims-to-simplify-course-selection-at-queens/",
+      },
+    ],
   },
 ];
 
 export function Projects() {
   return (
-    <section className="flex flex-col gap-3 lg:w-1/3 w-full min-w-0">
-      <h2 className="text-xs text-fg-tertiary lg:mt-6">🚀 NOTABLE PROJECTS</h2>
-      <div className="grid grid-cols-1 gap-3">
+    <section className="flex flex-col gap-3 w-full min-w-0">
+      <h2 className="text-xs text-fg-tertiary">🚀 NOTABLE PROJECTS</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {PROJECTS.map(
           (
-            { name, description, badges, github, webApp, rag, scrapers },
+            {
+              name,
+              description,
+              badges,
+              github,
+              webApp,
+              rag,
+              scrapers,
+              highlights,
+            },
             index,
           ) => (
             <Project
@@ -46,12 +66,13 @@ export function Projects() {
               webApp={webApp}
               rag={rag}
               scrapers={scrapers}
+              highlights={highlights}
             />
           ),
         )}
 
         {/* RateMyProfessors API Client — grouped parent card */}
-        <div className="bento-card flex flex-col gap-3">
+        <div className="bento-card flex flex-col gap-3 h-full">
           <p className="text-xs">📦 RateMyProfessors API Client</p>
 
           <p className="text-fg-tertiary lg:text-xs text-[10px]">
@@ -138,7 +159,7 @@ export function Projects() {
           </div>
 
           {/* Source code dropdown */}
-          <div className="relative z-10 flex flex-wrap items-center gap-1.5 mt-1">
+          <div className="relative z-10 flex flex-wrap items-center gap-1.5 mt-auto pt-1">
             <details className="group relative">
               <summary className="flex items-center gap-1.5 px-2 py-1 bg-accent/15 border border-accent/30 text-accent text-xs rounded hover:bg-accent/25 transition-colors cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                 <svg
@@ -225,7 +246,7 @@ export function Projects() {
         </div>
 
         {/* QMIND design team (from former Design Teams section) */}
-        <div className="bento-card flex flex-col gap-3">
+        <div className="bento-card flex flex-col gap-3 h-full">
           <div className="flex items-start justify-between gap-2">
             <div className="flex items-start gap-2.5 min-w-0">
               <Image
@@ -253,6 +274,41 @@ export function Projects() {
             Design team member at Queen&apos;s AI Club — project on predicting
             knee replacement surgery outcomes. Kingston, Canada.
           </p>
+        </div>
+      </div>
+
+      <h2 className="text-xs text-fg-tertiary mt-3">🌍 OPEN SOURCE</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="bento-card flex flex-col gap-2 h-full">
+          <p className="text-xs">🌙 OmniLRS</p>
+          <p className="text-fg-tertiary lg:text-xs text-[10px]">
+            Contributor to the Omniverse Lunar Robotics Simulator, an
+            open-source NVIDIA Isaac Sim simulator for lunar robotics.
+          </p>
+          <div className="relative z-10 flex flex-wrap items-center gap-1.5 mt-auto pt-1">
+            <a
+              href="https://github.com/OmniLRS/OmniLRS"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-2 py-1 bg-accent/15 border border-accent/30 text-accent text-xs rounded hover:bg-accent/25 transition-colors"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.379.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10Z"
+                />
+              </svg>
+              Source code
+            </a>
+          </div>
         </div>
       </div>
     </section>

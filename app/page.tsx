@@ -5,6 +5,7 @@ import { Awards as AwardsSection } from '@/app/sections/awards';
 import { Volunteering as VolunteeringSection } from '@/app/sections/volunteering';
 import { Hobbies as HobbiesSection } from '@/app/sections/hobbies';
 import { Tabs } from '@/components/tabs';
+import { ContributionGraph } from '@/components/contribution-graph';
 
 export default function Home() {
     return (
@@ -39,6 +40,9 @@ export default function Home() {
                     },
                 ]}
             />
+            <div className="mt-auto pt-10">
+                <ContributionGraph />
+            </div>
         </main>
     );
 }
